@@ -1,0 +1,98 @@
+@import url('https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,300..800&family=Space+Grotesk:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&family=Instrument+Serif:ital@0;1&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --font-display: 'Bricolage Grotesque', sans-serif;
+  --font-body: 'Space Grotesk', sans-serif;
+  --font-mono: 'JetBrains Mono', monospace;
+  --font-editorial: 'Instrument Serif', serif;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: auto;
+}
+
+body {
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+  /* Prevent text size adjustment on mobile rotation */
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+}
+
+h1, h2, h3, h4 {
+  font-family: var(--font-display);
+}
+
+h5, h6 {
+  font-family: var(--font-body);
+}
+
+body {
+  font-family: var(--font-body);
+}
+
+code, pre {
+  font-family: var(--font-mono);
+}
+
+.eyebrow, .tag, .label {
+  font-family: var(--font-mono);
+}
+
+.editorial, .editorial-accent {
+  font-family: var(--font-editorial);
+  font-style: italic;
+}
+
+/* Removed custom purple scrollbar so the browser default is used site-wide. */
+
+/* Global button styles */
+button {
+  @apply transition-all duration-300 ease-out;
+  /* Ensure minimum tap target for mobile */
+  min-height: 44px;
+}
+
+/* Gradient text utility */
+.gradient-text {
+  @apply bg-gradient-to-r from-purple-primary to-purple-light bg-clip-text text-transparent;
+}
+
+/* Glass morphism effect */
+.glass {
+  @apply bg-white/10 backdrop-blur-md border border-white/20;
+}
+
+/* Smooth transitions */
+.smooth-transition {
+  @apply transition-all duration-500 ease-out;
+}
+
+/* Responsive image utility */
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+/* Touch-action for interactive elements */
+[role="button"], button, a {
+  touch-action: manipulation;
+}
+
+/* Mobile-friendly section padding utility */
+@media (max-width: 768px) {
+  .section-pad {
+    padding-left: 16px;
+    padding-right: 16px;
+  }
+}
