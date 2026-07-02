@@ -1,7 +1,6 @@
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-
-const API_URL = "http://localhost:5000/api";
+import { authAPI } from "../api/client";
 
 const Login = () => {
   const navigate = useNavigate();
@@ -27,26 +26,13 @@ const Login = () => {
     setLoading(true);
 
     try {
-      const response = await fetch(`${API_URL}/auth/login`, {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({ email, password }),
-      });
-
-      const data = await response.json();
-
-      if (response.ok) {
-        localStorage.setItem("adminToken", data.token);
-        localStorage.setItem("adminName", data.admin.name);
-        localStorage.setItem("adminRole", data.admin.role);
-        navigate("/admin/dashboard");
-      } else {
-        setError(data.message || "Login failed");
-      }
+      const data = await authAPI.login(email, password);
+      localStorage.setItem("adminToken", data.token);
+      localStorage.setItem("adminName", data.admin.name);
+      localStorage.setItem("adminRole", data.admin.role);
+      navigate("/admin/dashboard");
     } catch (err) {
-      setError("Error logging in. Make sure the backend is running.");
+      setError(err.message || "Error logging in. Make sure the backend is running.");
     } finally {
       setLoading(false);
     }
