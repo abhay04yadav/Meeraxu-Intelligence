@@ -334,6 +334,7 @@ export function ProjectDetail() {
           {/* ... existing content ... */}
         <div style={{ maxWidth: 1180, margin: "0 auto" }}>
           <div
+            className="phases-grid"
             style={{
               display: "grid",
               gridTemplateColumns: "320px 1fr",
@@ -343,6 +344,7 @@ export function ProjectDetail() {
           >
             {/* Phase picker */}
             <div
+              className="phase-picker"
               style={{
                 position: "sticky",
                 top: 120,
@@ -456,6 +458,7 @@ export function ProjectDetail() {
                 <div
                   style={{
                     display: "flex",
+                    flexWrap: "wrap",
                     alignItems: "baseline",
                     gap: 20,
                     marginBottom: 24,
@@ -464,7 +467,7 @@ export function ProjectDetail() {
                   <div
                     style={{
                       fontFamily: "var(--font-display)",
-                      fontSize: 140,
+                      fontSize: "clamp(64px, 18vw, 140px)",
                       lineHeight: 0.8,
                       fontWeight: 500,
                       letterSpacing: "-0.05em",
@@ -512,6 +515,7 @@ export function ProjectDetail() {
                 </p>
 
                 <div
+                  className="phase-bullets-grid"
                   style={{
                     display: "grid",
                     gridTemplateColumns: "1fr 1fr",
@@ -637,12 +641,12 @@ export function ProjectDetail() {
 
       <style>{`
         @media (max-width: 900px) {
-          section > div > div[style*="gridTemplateColumns"] {
+          .phases-grid {
             grid-template-columns: 1fr !important;
             gap: 32px !important;
           }
 
-          div[style*="position: sticky"] {
+          .phase-picker {
             position: static !important;
             top: auto !important;
             flex-direction: row !important;
@@ -653,18 +657,18 @@ export function ProjectDetail() {
             scrollbar-width: none;
           }
 
-          div[style*="position: sticky"]::-webkit-scrollbar {
+          .phase-picker::-webkit-scrollbar {
             display: none;
           }
 
-          div[style*="position: sticky"] > button {
+          .phase-picker > button {
             flex-shrink: 0 !important;
             min-width: 160px !important;
           }
         }
 
         @media (max-width: 560px) {
-          div[style*="gridTemplateColumns: 1fr 1fr"] {
+          .phase-bullets-grid {
             grid-template-columns: 1fr !important;
           }
         }

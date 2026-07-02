@@ -288,10 +288,6 @@ function ContactSection() {
         <div
           className="contact-main-grid"
           style={{
-            display: "grid",
-            gridTemplateColumns: "1fr 1fr",
-            gap: 24,
-            alignItems: "stretch",
             minHeight: 10,
           }}
         >
@@ -301,14 +297,6 @@ function ContactSection() {
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.62 }}
-            style={{
-              position: "relative",
-              borderRadius: 28,
-              overflow: "hidden",
-              minHeight: 0,
-            }}
-            // Slightly reduce visual height so it's a bit shorter than the form
-            // cap the max height relative to the available height and add vertical margin
             style={{
               position: "relative",
               borderRadius: 28,

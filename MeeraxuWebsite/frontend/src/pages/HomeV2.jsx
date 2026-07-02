@@ -665,6 +665,7 @@ function AboutVisual() {
 
       {/* Bottom stat strip */}
       <div
+        className="stat-strip"
         style={{
           borderTop: "1px solid var(--border)",
           display: "grid",
@@ -1282,8 +1283,19 @@ function Services({ services = [], loading = false }) {
           .cta-inner {
             padding: 48px 24px;
           }
-        }
 
+          .stat-strip {
+            grid-template-columns: 1fr !important;
+          }
+
+          .stat-strip > div {
+            border-right: none !important;
+            border-bottom: 1px solid var(--border);
+          }
+
+          .stat-strip > div:last-child {
+            border-bottom: none;
+          }
         }
       `}</style>
     </section>

@@ -186,11 +186,6 @@ export function GlobalStyles() {
         .marquee-track span {
           font-size: 16px !important;
         }
-
-        /* Services section header left margin fix */
-        [style*="marginLeft: 50"] {
-          margin-left: 0 !important;
-        }
       }
 
       /* Ensure no horizontal overflow anywhere */
