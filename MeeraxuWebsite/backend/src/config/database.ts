@@ -11,11 +11,7 @@ const ensureAdminAccount = async (email: string, password: string, name: string,
     return;
   }
 
-  existingAdmin.password = password;
-  existingAdmin.name = name;
-  existingAdmin.role = role;
-  await existingAdmin.save();
-  console.log(`ℹ️  Existing ${role === 'super-admin' ? 'super admin' : 'admin'} updated: ${email}`);
+  console.log(`ℹ️  Existing ${role === 'super-admin' ? 'super admin' : 'admin'} found: ${email}`);
 };
 
 const connectDB = async () => {

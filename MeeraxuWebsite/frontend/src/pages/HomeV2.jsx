@@ -1609,7 +1609,14 @@ function CTABanner() {
               flexWrap: "wrap",
             }}
           >
-            <Link to="/contact" style={{ textDecoration: "none" }}>
+            <Link
+              to="/contact"
+              style={{ textDecoration: "none" }}
+              onClick={(e) => {
+                e.preventDefault();
+                window.location.href = "/contact#contact-form";
+              }}
+            >
               <motion.div whileHover="hover" whileTap="tap" style={{ position: "relative" }}>
                 <button
                   className="btn-primary"
@@ -1652,7 +1659,7 @@ function CTABanner() {
                     }}
                   />
                 </button>
-              </motion.div> onClick={(e) => { e.preventDefault(); window.location.href = '/contact#contact-form'; }}
+              </motion.div>
             </Link>
             <Link to="/contact" style={{ textDecoration: "none" }}>
               <motion.button
