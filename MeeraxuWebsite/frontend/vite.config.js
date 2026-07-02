@@ -1,12 +1,10 @@
 import { defineConfig, loadEnv } from 'vite'
 import react from '@vitejs/plugin-react'
 
-console.log('[DIAGNOSTIC] process.env.VITE_API_URL at build time:', JSON.stringify(process.env.VITE_API_URL))
-
 export default defineConfig(({ mode }) => {
   const env = loadEnv(mode, process.cwd(), '')
-  console.log('[DIAGNOSTIC] vite mode:', mode)
-  console.log('[DIAGNOSTIC] loadEnv().VITE_API_URL:', JSON.stringify(env.VITE_API_URL))
+  const apiUrl = process.env.VITE_API_URL || env.VITE_API_URL || 'http://localhost:5000/api'
+  console.log('[DIAGNOSTIC] resolved VITE_API_URL for define():', JSON.stringify(apiUrl))
 
   return {
     plugins: [react()],
@@ -14,5 +12,8 @@ export default defineConfig(({ mode }) => {
       open: true,
     },
     base: '/',
+    define: {
+      'import.meta.env.VITE_API_URL': JSON.stringify(apiUrl),
+    },
   }
 })
